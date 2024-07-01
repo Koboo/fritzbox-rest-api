@@ -43,25 +43,37 @@ public class TestLaunch {
 
         // Get the current information about the internet connections.
         InternetInfo internetInfo = fritzBox.getInternetInfo().get(0);
-        System.out.println(internetInfo.connected());
-        System.out.println(internetInfo.ipv4());
-        System.out.println(internetInfo.ipv4Connected());
-        System.out.println(internetInfo.ipv6());
-        System.out.println(internetInfo.ipv6Connected());
-        System.out.println(internetInfo.providerName());
-        System.out.println(internetInfo.upstreamBits());
-        System.out.println(internetInfo.mediumUpstreamBits());
-        System.out.println(internetInfo.downstreamBits());
-        System.out.println(internetInfo.mediumDownstreamBits());
+        System.out.println(internetInfo.isConnected());
+        System.out.println(internetInfo.isIpv4Connected());
+        System.out.println(internetInfo.isIpv4Connected());
+        System.out.println(internetInfo.getIpv6());
+        System.out.println(internetInfo.isIpv6Connected());
+        System.out.println(internetInfo.getProviderName());
+        System.out.println(internetInfo.getUpstreamBits());
+        System.out.println(internetInfo.getMediumUpstreamBits());
+        System.out.println(internetInfo.getDownstreamBits());
+        System.out.println(internetInfo.getMediumDownstreamBits());
 
         // Force a reconnect to get/request a new ip address
         fritzBox.reconnect();
 
         // Request the information of the current fritz os
         FritzOS fritzOS = fritzBox.getFritzOS();
+        System.out.println(fritzOS.getVersion());
+        System.out.println(fritzOS.getDateOfLastUpdate());
+        System.out.println(fritzOS.getDateOfLastAutomaticCheck());
 
         // Request the log event entries
         List<LogEntry> logEntryList = fritzbox.getLogEvents();
+        LogEntry logEntry = logEntryList.get(0);
+        System.out.println(logEntry.getHelpLink());
+        System.out.println(logEntry.getTime());
+        System.out.println(logEntry.getDate());
+        System.out.println(logEntry.getGroup());
+        System.out.println(logEntry.getId());
+        System.out.println(logEntry.getMessage());
+        System.out.println(logEntry.getGroup());
+        System.out.println(logEntry.getNoHelp());
     }
 }
 ````
