@@ -39,7 +39,7 @@ import java.util.*;
 public class FritzBox {
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(
-            "[dd.MM.yyyy HH:mm]" +
+        "[dd.MM.yyyy HH:mm]" +
             "[dd.MM.yyyy H:mm]" +
             "[dd.MM.yyyy H:m]"
     );
@@ -73,9 +73,9 @@ public class FritzBox {
 
     public FritzBox(String address, String username, String password, FritzBoxLanguage language) {
         this.client = HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(20))
-                .followRedirects(HttpClient.Redirect.ALWAYS)
-                .build();
+            .connectTimeout(Duration.ofSeconds(20))
+            .followRedirects(HttpClient.Redirect.ALWAYS)
+            .build();
 
         if (address == null || address.isEmpty()) {
             fritzboxAddress = DEFAULT_ADDRESS;
@@ -106,15 +106,15 @@ public class FritzBox {
         String challenge;
         try {
             HttpRequest request = HttpRequest.newBuilder(authUrl)
-                    .GET()
-                    .header("Accept", "*/*")
-                    .build();
+                .GET()
+                .header("Accept", "*/*")
+                .build();
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             String xmlResponse = response.body();
             challenge = xmlResponse.substring(
-                    xmlResponse.indexOf("<Challenge>") + 11,
-                    xmlResponse.indexOf("<Challenge>") + 19
+                xmlResponse.indexOf("<Challenge>") + 11,
+                xmlResponse.indexOf("<Challenge>") + 19
             );
         } catch (Exception e) {
             throw new FritzboxException("Couldn't request challenge from fritz box!", e);
@@ -130,20 +130,20 @@ public class FritzBox {
         String localSessionId;
         try {
             String queryParameters =
-                    "response=" + challenge + '-' + digestChallengePassword +
-                            "&username=" + username;
+                "response=" + challenge + '-' + digestChallengePassword +
+                    "&username=" + username;
             HttpRequest request = HttpRequest.newBuilder(authUrl)
-                    .header("Accept", "*/*")
-                    .header("Content-Type", "application/x-www-form-urlencoded")
-                    .POST(HttpRequest.BodyPublishers.ofString(queryParameters))
-                    .build();
+                .header("Accept", "*/*")
+                .header("Content-Type", "application/x-www-form-urlencoded")
+                .POST(HttpRequest.BodyPublishers.ofString(queryParameters))
+                .build();
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             String xmlResponse = response.body();
 
             localSessionId = xmlResponse.substring(
-                    xmlResponse.indexOf("<SID>") + 5,
-                    xmlResponse.indexOf("<SID>") + 21
+                xmlResponse.indexOf("<SID>") + 5,
+                xmlResponse.indexOf("<SID>") + 21
             );
         } catch (IOException | InterruptedException e) {
             throw new FritzboxException("Couldn't request new session id from fritz box!", e);
@@ -182,11 +182,11 @@ public class FritzBox {
                 queryParameters = queryParameters.substring(1);
             }
             HttpRequest request = HttpRequest.newBuilder(create(REST_DATA))
-                    .header("Accept", "*/*")
-                    .header("Accept-Encoding", "gzip, deflate")
-                    .header("Content-Type", "application/x-www-form-urlencoded")
-                    .POST(HttpRequest.BodyPublishers.ofString(queryParameters))
-                    .build();
+                .header("Accept", "*/*")
+                .header("Accept-Encoding", "gzip, deflate")
+                .header("Content-Type", "application/x-www-form-urlencoded")
+                .POST(HttpRequest.BodyPublishers.ofString(queryParameters))
+                .build();
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() != 200) {
@@ -204,7 +204,7 @@ public class FritzBox {
     }
 
     public List<InternetInfo> getInternetInfo(FritzBoxLanguage language) {
-        if(language == null) {
+        if (language == null) {
             throw new NullPointerException("Given language can't be null!");
         }
         HttpResponse<String> response = getDataPostResponse(new HashMap<>() {{
@@ -241,16 +241,16 @@ public class FritzBox {
             boolean ipv6Connected = ipv6Object.get("connected").getAsBoolean();
 
             internetInfoList.add(new InternetInfo(
-                    connected,
-                    ipv4,
-                    ipv4Connected,
-                    ipv6,
-                    ipv6Connected,
-                    providerName,
-                    upstreamBits,
-                    mediumUpstreamBits,
-                    downstreamBits,
-                    mediumDownstreamBits
+                connected,
+                ipv4,
+                ipv4Connected,
+                ipv6,
+                ipv6Connected,
+                providerName,
+                upstreamBits,
+                mediumUpstreamBits,
+                downstreamBits,
+                mediumDownstreamBits
             ));
         }
 
@@ -262,7 +262,7 @@ public class FritzBox {
     }
 
     public void reconnect(FritzBoxLanguage language) {
-        if(language == null) {
+        if (language == null) {
             throw new NullPointerException("Given language can't be null!");
         }
         getDataPostResponse(new HashMap<>() {{
@@ -299,14 +299,14 @@ public class FritzBox {
         LocalDateTime dateOfLastAutomaticCheck = LocalDateTime.parse(elements.get(2).html(), DATE_FORMATTER);
 
         return new FritzOS(
-                fritzOsVersion,
-                dateOfLastUpdate,
-                dateOfLastAutomaticCheck
+            fritzOsVersion,
+            dateOfLastUpdate,
+            dateOfLastAutomaticCheck
         );
     }
 
     public List<LogEntry> getLogEvents(FritzBoxLanguage language) {
-        if(language == null) {
+        if (language == null) {
             throw new NullPointerException("Given language can't be null!");
         }
         HttpResponse<String> response = getDataPostResponse(new HashMap<>() {{
@@ -333,13 +333,13 @@ public class FritzBox {
             int noHelp = logObject.get("noHelp").getAsInt();
 
             logEntryList.add(new LogEntry(
-                    helpLink,
-                    time,
-                    group,
-                    id,
-                    message,
-                    date,
-                    noHelp
+                helpLink,
+                time,
+                group,
+                id,
+                message,
+                date,
+                noHelp
             ));
         }
 
