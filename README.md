@@ -17,7 +17,6 @@ Note: The REST api of fritzbox is not documented. So this library could lack som
 ## Usage
 
 ````java
-
 public class TestLaunch {
 
     public static void main(String[] args) {
@@ -47,5 +46,4 @@ public class TestLaunch {
         fritzBox.reconnect();
     }
 }
-
 ````
