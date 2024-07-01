@@ -51,6 +51,12 @@ public class TestLaunch {
         
         // Force a reconnect to get/request a new ip address
         fritzBox.reconnect();
+        
+        // Request the information of the current fritz os
+        FritzOS fritzOS = fritzBox.getFritzOS();
+
+        // Request the log event entries
+        List<LogEntry> logEntryList = fritzbox.getLogEvents();
     }
 }
 ````

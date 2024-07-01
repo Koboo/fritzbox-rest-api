@@ -282,7 +282,7 @@ public class FritzBox {
         }});
     }
 
-    public FritzOS getFritzboxInfo() {
+    public FritzOS getFritzOS() {
         HttpResponse<String> response = getDataPostResponse(new HashMap<>() {{
             put("xhr", "1");
             put("page", "update");
