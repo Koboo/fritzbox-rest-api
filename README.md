@@ -70,6 +70,7 @@ public class TestLaunch {
 
 fritzbox-rest-api is deployed at the maven central repository.
 
+**Maven:**
 ````xml
 <dependency>
     <groupId>eu.koboo</groupId>
@@ -78,6 +79,7 @@ fritzbox-rest-api is deployed at the maven central repository.
 </dependency>
 ````
 
+**Gradle:**
 ````groovy
 implementation 'eu.koboo:fritzbox-rest-api:1.0.1'
 ````
