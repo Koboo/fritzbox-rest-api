@@ -3,6 +3,7 @@ package eu.koboo.fritzbox;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+// Source: https://github.com/loigu/fritzBoxClient
 /// fritzbox compatible md5sum implementation
 public class FritzBoxMd5 {
 
@@ -64,7 +65,7 @@ public class FritzBoxMd5 {
 
 	/**
 	 * emulate fritzBox js md5digest for challenge-response auth
-	 * 
+	 *
 	 * js fritzbox md5 emulation: (1) replace high value bytes by '.' (2) expand to
 	 * 16bit (3) compute md5 and (4) use hex representation
 	 *
