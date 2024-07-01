@@ -1,10 +1,17 @@
 package eu.koboo.fritzbox.model;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+
 import java.time.LocalDateTime;
 
-public record FritzOS(
-        String version,
-        LocalDateTime dateOfLastUpdate,
-        LocalDateTime dateOfLastAutomaticCheck
-) {
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@RequiredArgsConstructor
+@Getter
+public class FritzOS {
+    String version;
+    LocalDateTime dateOfLastUpdate;
+    LocalDateTime dateOfLastAutomaticCheck;
 }
