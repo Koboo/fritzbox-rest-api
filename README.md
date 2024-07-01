@@ -65,3 +65,19 @@ public class TestLaunch {
     }
 }
 ````
+
+## Maven / Gradle
+
+fritzbox-rest-api is deployed at the maven central repository.
+
+````xml
+<dependency>
+    <groupId>eu.koboo</groupId>
+    <artifactId>fritzbox-rest-api</artifactId>
+    <version>1.0.1</version>
+</dependency>
+````
+
+````groovy
+implementation 'eu.koboo:fritzbox-rest-api:1.0.1'
+````
