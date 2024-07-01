@@ -6,13 +6,18 @@ Note: The REST api of fritzbox is not documented. So this library could lack som
 
 ## Current features
 
-* Get internet information
+* get internet information
   * ipv4 (+ status)
   * ipv6 (+ status)
   * provider name
   * upstream bits (+ medium)
   * downstream bits (+ medium)
-* Force reconnect (get/request new ip address)
+* force reconnect (get/request new ip address)
+* get information about fritz os
+  * current version
+  * date of last update
+  * date of last automatic availability check
+* get log events
 
 ## Usage
 
