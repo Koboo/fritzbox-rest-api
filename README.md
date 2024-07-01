@@ -19,6 +19,8 @@ Note: The REST api of fritzbox is not documented. So this library could lack som
   * date of last automatic availability check
 * get log events
 
+[Please submit requested features as new issue!](https://github.com/Koboo/fritzbox-rest-api/issues)
+
 ## Usage
 
 ````java
