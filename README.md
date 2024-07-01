@@ -4,6 +4,11 @@ This is a project that aims to provide fritzbox data as rest api.
 
 Note: The REST api of fritzbox is not documented. So this library could lack some features!
 
+## Requirements
+
+* > JDK 11 or above
+* > Fritz!OS 7.20 or above
+
 ## Current features
 
 * get internet information
@@ -32,7 +37,7 @@ public class TestLaunch {
                 "your_username",
                 "your_password"
         );
-        
+
         // Log into your fritzbox
         fritzBox.login();
 
@@ -48,10 +53,10 @@ public class TestLaunch {
         System.out.println(internetInfo.mediumUpstreamBits());
         System.out.println(internetInfo.downstreamBits());
         System.out.println(internetInfo.mediumDownstreamBits());
-        
+
         // Force a reconnect to get/request a new ip address
         fritzBox.reconnect();
-        
+
         // Request the information of the current fritz os
         FritzOS fritzOS = fritzBox.getFritzOS();
 
