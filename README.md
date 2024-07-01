@@ -81,3 +81,8 @@ fritzbox-rest-api is deployed at the maven central repository.
 ````groovy
 implementation 'eu.koboo:fritzbox-rest-api:1.0.1'
 ````
+
+## Credits
+
+* [Basic structure of fritzbox api](https://github.com/ISchwarz23/FritzBox-API)
+* [MD5 javascript hashing](https://github.com/loigu/fritzBoxClient)
